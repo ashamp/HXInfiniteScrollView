@@ -7,10 +7,18 @@
 
 //用法:
     HXInfiniteScrollView *infiniteScrollView=[[HXInfiniteScrollView alloc]initWithDataSource:@[@"数据1",@"数据2",@"数据3",@"数据4"] contentViewCreationBlock:^UIView *(id dataModel) {
+    
         UILabel *label=[UILabel new];
+        
         label.backgroundColor=[UIColor randomColor];
+        
         label.text=(NSString *)dataModel;
+        
         return label;
+        
     }];
+    
     infiniteScrollView.frame=CGRectMake(100, 100, 200, 100);
-    [self.view addSubview:infiniteScrollView]; 
+    
+    [self.view addSubview:infiniteScrollView];
+    
