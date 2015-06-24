@@ -13,4 +13,4 @@
         return label;
     }];
     infiniteScrollView.frame=CGRectMake(100, 100, 200, 100);
-    [self.view addSubview:infiniteScrollView];
+    [self.view addSubview:infiniteScrollView]; 
