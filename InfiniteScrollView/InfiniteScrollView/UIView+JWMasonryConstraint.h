@@ -1,6 +1,5 @@
 //
 //  UIView+JWMasonryConstraint.h
-//  20150506恒信商城特卖页面
 //
 //  Created by 谢俊伟 on 5/7/15.
 //  Copyright (c) 2015 谢俊伟. All rights reserved.
