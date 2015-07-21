@@ -1,6 +1,6 @@
 //
 //  HXInfiniteScrollView.m
-//  20150618测试无尽的滚动
+//  无尽的滚动
 //
 //  Created by 谢俊伟 on 6/18/15.
 //  Copyright (c) 2015 谢俊伟. All rights reserved.
@@ -27,18 +27,6 @@ static BOOL defaultShouldStartAutoScrollAfterDragging=YES;
 @implementation HXInfiniteScrollView
 
 #pragma mark - Designated init
-
-//不再使用这个初始化方法
--(instancetype)initWithViews:(NSArray *)views shouldAuotScroll:(BOOL)shouldAuotScroll{
-    self=[super init];
-    if (self) {
-        self.views=views;
-        self.shouldAutoScroll=shouldAuotScroll;
-        self.autoScrollInterval=defaultAutoScrollInterval;
-        [self setupViews];
-    }
-    return self;
-}
 
 -(instancetype)initWithDataSource:(NSArray *)dataSource contentViewCreationBlock:(HXInfiniteScrollViewContentViewCreationBlock)creationBlock{
     self=[super init];
@@ -151,6 +139,7 @@ static BOOL defaultShouldStartAutoScrollAfterDragging=YES;
 
 -(void)layoutSubviews{
     [super layoutSubviews];
+    [[self class] cancelPreviousPerformRequestsWithTarget:self];
     if (self.superview) {
         //只有有确切的superview时才开始滚动
         [self autoScrollToNextPage];
@@ -187,13 +176,6 @@ static BOOL defaultShouldStartAutoScrollAfterDragging=YES;
         self.currentPageIndex = [self getValidNextPageIndexWithPageIndex:self.currentPageIndex + 1];
         [self setupContentViews];
     }
-    //上面8行等同于下面,还是用上面的好了....
-//    if (offset.x<=0 || offset.x+ CGRectGetWidth(self.frame)>=self.scrollView.contentSize.width) {
-//        NSLog(@"%s",__func__);
-//        //滑动到最左端或滑动到最右端
-//        self.currentPageIndex = [self getValidNextPageIndexWithPageIndex:self.currentPageIndex + (offset.x<=0?-1:1)];
-//        [self setupContentViews];
-//    }
 }
 
 #pragma mark - Content Management
